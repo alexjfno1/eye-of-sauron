@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node Raspberry Pi Controller</title>
+  </head>
+  <body>
+    <h1>Node Raspberry Pi Controller</h1>
+    <script type=text/javascript src=/socket.io/socket.io.js></script>
+    <script type=text/javascript>
+      var socket = io.connect("http://localhost:1234");
+      socket.emit("Pi", {data: "Raspberry"});
+    </script>
+  </body>
+</html>
