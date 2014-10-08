@@ -8,6 +8,8 @@ var piblaster = require("pi-blaster.js");
 server.listen(1234);
 
 app.use("/css", express.static(__dirname + "/css"));
+app.use("/js", express.static(__dirname + "/js"));
+
 app.get("/", function(req, res) {
   res.sendfile(__dirname + "/views/index.html");
 });
