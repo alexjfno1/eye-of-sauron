@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var socket = io.connect("http://localhost:1234");
+  var socket = io.connect("http://192.168.2.19:1234");
 
   $(".left").click(function() {
     socket.emit("Pi", {direction: "left"});
