@@ -5,10 +5,6 @@ var io = require("socket.io")(server);
 
 var piblaster = require("pi-blaster.js");
 
-server.listen(1234, function() {
-  console.log("App started!")
-});
-
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/js", express.static(__dirname + "/js"));
 
@@ -19,14 +15,25 @@ app.get("/", function(req, res) {
 io.on("connection", function(socket) {
   socket.on("Pi", function(data) {
     move(data.direction);
-    // piblaster.setPwm(7, 0.24);
   });
 });
 
+var position = 0.15;
+
+server.listen(1234, function() {
+  console.log("App started!")
+  //piblaster.setPwm(7, position);
+  console.log("Servo moved to center position");
+});
+
 function move(direction) {
-  if(direction == "left") {
+  if(direction == "left" && position > 0.06) {
     console.log("Going left!");
-  } else if(direction == "right") {
+    position =+ parseFloat((position -= 0.01).toFixed(2));
+  } else if(direction == "right" && position < 0.24) {
     console.log("Going right!");
+    position =+ parseFloat((position += 0.01).toFixed(2));
   }
+  console.log(position);
+  //piblaster.setPwm(7, position);
 }
