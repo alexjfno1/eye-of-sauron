@@ -24,7 +24,6 @@ server.listen(1234, function() {
   console.log("App started!")
   piblaster.setPwm(17, position);
   console.log("Servo moved to center position");
-  console.log(app.settings.env);
 });
 
 function move(direction) {
