@@ -10,6 +10,7 @@
     "express": "3.4.8",
     "toffee": "*",
     "socket.io": "*",
+    "socket.io-client": "*",
     "pi-blaster.js": "*"
   },
   "scripts": {

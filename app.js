@@ -12,7 +12,9 @@ app.get("/", function(req, res) {
 });
 
 io.on("connection", function(socket) {
-  console.log("Client connected");
+  socket.on("Pi", function(data) {
+    io.emit("Pi", data);
+  });
 });
 
 server.listen((process.env.PORT || 1234), function() {
