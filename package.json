@@ -14,7 +14,6 @@
     "pi-blaster.js": "*"
   },
   "scripts": {
-    "start": "node app.js",
-    "startClient": "node pi-client.js"
+    "start": "node app.js"
   }
 }
