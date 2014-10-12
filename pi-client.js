@@ -25,6 +25,9 @@ function move(direction) {
   } else if(direction == "left" && position < 0.23) {
     console.log("Going left!");
     position =+ parseFloat((position += 0.01).toFixed(2));
+  } else if(direction == "centre") {
+    console.log("Centreing!");
+    position = 0.15;
   }
   piblaster.setPwm(17, position);
 }
