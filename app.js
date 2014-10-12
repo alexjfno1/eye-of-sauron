@@ -30,7 +30,7 @@ function move(direction) {
   if(direction == "left" && position > 0.06) {
     console.log("Going left!");
     position =+ parseFloat((position -= 0.01).toFixed(2));
-  } else if(direction == "right" && position < 0.24) {
+  } else if(direction == "right" && position < 0.23) {
     console.log("Going right!");
     position =+ parseFloat((position += 0.01).toFixed(2));
   }
