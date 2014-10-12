@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var socket = io.connect("http://192.168.0.27:1234");
+  var socket = io.connect("http://eye-of-sauron.herokuapp.com");
 
   $(".left").click(function() {
     socket.emit("Pi", {direction: "left"});
