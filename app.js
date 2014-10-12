@@ -15,6 +15,6 @@ io.on("connection", function(socket) {
   console.log("Client connected");
 });
 
-server.listen(1234, function() {
+server.listen((process.env.PORT || 1234), function() {
   console.log("App started!")
 });
