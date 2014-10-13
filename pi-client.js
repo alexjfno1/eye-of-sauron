@@ -10,7 +10,7 @@ io.on("connect", function() {
   piblaster.setPwm(17, position);
   console.log("Resetting servo position");
   io.on("Pi", function(data) {
-    move(data.direction);
+    move(data.direction, data.speed);
   });
 });
 
@@ -18,13 +18,16 @@ server.listen((process.env.PORT || 2345), function() {
   console.log("App started!");
 });
 
-function move(direction) {
+function move(direction, speed) {
+  if(speed > 0.01) {
+   speed = 0.01
+  }
   if(direction == "right" && position > 0.06) {
     console.log("Going right!");
-    position =+ parseFloat((position -= 0.01).toFixed(2));
+    position =+ parseFloat((position -= speed).toFixed(2));
   } else if(direction == "left" && position < 0.23) {
     console.log("Going left!");
-    position =+ parseFloat((position += 0.01).toFixed(2));
+    position =+ parseFloat((position += speed).toFixed(2));
   } else if(direction == "centre") {
     console.log("Centreing!");
     position = 0.15;
