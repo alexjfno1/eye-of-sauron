@@ -45,14 +45,23 @@ html, body {
 
 .speed span {
   margin: 0;
-  padding: 10px 20px;
   display: inline-block;
   border-radius: 32px;
   color: #046380;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
 }
 
 .speed span.selected {
   background-color: #046380;
   color: #EFECCA;
+}
+
+.button:hover {
+  color: #023240;
+}
+
+.centre:hover, .speed span:hover {
+  background-color: #023240;
 }
