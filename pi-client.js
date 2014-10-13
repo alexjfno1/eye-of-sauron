@@ -28,10 +28,10 @@ function move(direction, speed) {
   }
   if(direction == "right" && position > 0.06) {
     console.log("Going right!");
-    position =+ parseFloat((position -= speed).toFixed(3));
+    position =+ parseFloat((position -= speed).toFixed(5));
   } else if(direction == "left" && position < 0.23) {
     console.log("Going left!");
-    position =+ parseFloat((position += speed).toFixed(3));
+    position =+ parseFloat((position += speed).toFixed(5));
   } else if(direction == "centre") {
     console.log("Centreing!");
     position = 0.15;
