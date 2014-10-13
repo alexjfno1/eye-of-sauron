@@ -1,40 +1,45 @@
 $(document).ready(function() {
 
   var socket = io.connect("http://eye-of-sauron.herokuapp.com");
+  var servoSpeed = "0.0005"
 
   $(".left").click(function() {
-    socket.emit("Pi", {direction: "left", speed: $('input#speed').val()});
+    send("left");
   });
 
   $(".right").click(function() {
-    socket.emit("Pi", {direction: "right", speed: $('input#speed').val()});
+    send("right");
   });
 
   $(".centre").click(function() {
-    socket.emit("Pi", {direction: "centre", speed: $('input#speed').val()});
+    send("centre");
   });
 
   $(".speed span").on("click", function() {
     $(".speed span").removeClass("selected");
     $(this).toggleClass("selected");
-    var speed = getServoSpeed($(this).text());
-    $("input#speed").val(speed);
+    servoSpeed = getServoSpeed($(this).text());
   });
 
   $(document).on("keydown", function(e) {
     if(e.keyCode === 39) {
-      socket.emit("Pi", {direction: "right", speed: $('input#speed').val()});
+      send("right");
     } else if(e.keyCode === 37) {
-      socket.emit("Pi", {direction: "left", speed: $('input#speed').val()});
+      send("left");
     } else if(e.keyCode === 32) {
-      socket.emit("Pi", {direction: "centre", speed: $('input#speed').val()});
+      send("centre");
     }
   });
 
+  function getServoSpeed(speed) {
+    if(speed === "1") { return "0.0005"; }
+    else if(speed === "2") { return "0.005"; }
+    else { return "0.01"; }
+  }
+
+  function send(direction) {
+    socket.emit("Pi", {direction: direction, speed: servoSpeed});
+  }
+
 });
 
-function getServoSpeed(speed) {
-  if(speed === "1") { return "0.0005"; }
-  else if(speed === "2") { return "0.005"; }
-  else { return "0.01"; }
-}
