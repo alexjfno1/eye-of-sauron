@@ -19,15 +19,19 @@ server.listen((process.env.PORT || 2345), function() {
 });
 
 function move(direction, speed) {
+  if(typeof(speed) === "undefined") {
+    speed = 0.01
+  }
+  speed = parseFloat(speed);
   if(speed > 0.01) {
    speed = 0.01
   }
   if(direction == "right" && position > 0.06) {
     console.log("Going right!");
-    position =+ parseFloat((position -= speed).toFixed(2));
+    position =+ parseFloat((position -= speed).toFixed(3));
   } else if(direction == "left" && position < 0.23) {
     console.log("Going left!");
-    position =+ parseFloat((position += speed).toFixed(2));
+    position =+ parseFloat((position += speed).toFixed(3));
   } else if(direction == "centre") {
     console.log("Centreing!");
     position = 0.15;
