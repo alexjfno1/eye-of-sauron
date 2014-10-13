@@ -37,3 +37,22 @@ html, body {
   font-size: 32px;
   cursor: pointer;
 }
+
+.speed {
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+.speed span {
+  margin: 0;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 32px;
+  color: #046380;
+  cursor: pointer;
+}
+
+.speed span.selected {
+  background-color: #046380;
+  color: #EFECCA;
+}

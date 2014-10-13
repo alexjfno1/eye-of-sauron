@@ -14,6 +14,13 @@ $(document).ready(function() {
     socket.emit("Pi", {direction: "centre", speed: $('input#speed').val()});
   });
 
+  $(".speed span").on("click", function() {
+    $(".speed span").removeClass("selected");
+    $(this).toggleClass("selected");
+    var speed = getServoSpeed($(this).text());
+    $("input#speed").val(speed);
+  });
+
   $(document).on("keydown", function(e) {
     if(e.keyCode === 39) {
       socket.emit("Pi", {direction: "right", speed: $('input#speed').val()});
@@ -26,3 +33,8 @@ $(document).ready(function() {
 
 });
 
+function getServoSpeed(speed) {
+  if(speed === "1") { return "0.0005"; }
+  else if(speed === "2") { return "0.005"; }
+  else { return "0.01"; }
+}
