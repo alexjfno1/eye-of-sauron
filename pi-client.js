@@ -4,12 +4,13 @@ var server = require("http").Server(app);
 var io = require("socket.io-client")("http://eye-of-sauron.herokuapp.com", {reconnect: true});
 var piblaster = require("pi-blaster.js");
 
-var position = 0.15
+var position = 0.15;
+var key = process.env.SERVO_KEY;
 
 io.on("connect", function() {
   piblaster.setPwm(17, position);
   console.log("Resetting servo position");
-  io.on("Pi", function(data) {
+  io.on("Pi-" + key, function(data) {
     move(data.direction, data.speed);
   });
 });
