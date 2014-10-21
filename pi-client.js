@@ -9,6 +9,7 @@ var key = process.env.SERVO_KEY;
 
 io.on("connect", function() {
   piblaster.setPwm(17, position);
+  console.log("Servo Key: " + key);
   console.log("Resetting servo position");
   io.on("PiServo", function(data) {
     if(data.servoName === key) {
