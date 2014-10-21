@@ -38,7 +38,8 @@ $(document).ready(function() {
   }
 
   function send(direction) {
-    socket.emit("Pi", {direction: direction, speed: servoSpeed});
+    var key = $("input#servo-key").val();
+    socket.emit("Pi-" + key, {direction: direction, speed: servoSpeed});
   }
 
 });
