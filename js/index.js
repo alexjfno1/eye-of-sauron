@@ -39,7 +39,7 @@ $(document).ready(function() {
 
   function send(direction) {
     var key = $("input#servo-key").val();
-    socket.emit("Pi-" + key, {direction: direction, speed: servoSpeed});
+    socket.emit("PiServo", {servoName: key, direction: direction, speed: servoSpeed});
   }
 
 });

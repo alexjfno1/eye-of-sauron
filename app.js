@@ -12,8 +12,8 @@ app.get("/", function(req, res) {
 });
 
 io.on("connection", function(socket) {
-  socket.on("Pi", function(data) {
-    io.emit("Pi", data);
+  socket.on("PiServo", function(data) {
+    io.emit("PiServo", data);
   });
 });
 
