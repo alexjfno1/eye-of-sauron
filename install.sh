@@ -25,4 +25,4 @@ rm -rf pi-blaster
 npm install
 
 #Setup servo key
-sed s/SERVO_KEY/\$1/ pi-client.js
+sed s/SERVO_KEY/$1/ pi-client.js
