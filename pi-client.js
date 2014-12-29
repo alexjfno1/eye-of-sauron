@@ -5,7 +5,7 @@ var io = require("socket.io-client")("http://eye-of-sauron.herokuapp.com", {reco
 var piblaster = require("pi-blaster.js");
 
 var position = 0.15;
-var key = process.argv[2];
+var key = "SERVO_KEY";
 
 io.on("connect", function() {
   piblaster.setPwm(17, position);
